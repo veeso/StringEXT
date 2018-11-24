@@ -27,6 +27,10 @@
 #include <inttypes.h>
 #include <string.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 int indexOf(char* haystack, char* needle);
 int lastIndexOf(char* haystack, char* needle);
 
@@ -62,5 +66,9 @@ char* rjust(char* str, int width, char fillChar);
 
 int asciiToHex(uint8_t* dest, char* str);
 char* hexToAscii(char* dest, uint8_t* bytes, size_t len);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
