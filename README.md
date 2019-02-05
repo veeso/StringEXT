@@ -1,12 +1,25 @@
-# StringEXT
+# libStringEXT
+
+[![HitCount](http://hits.dwyl.io/ChristianVisintin/StringEXT.svg)](http://hits.dwyl.io/ChristianVisintin/StringEXT) [![Stars](https://img.shields.io/github/stars/ChristianVisintin/libBMPP.svg)](https://github.com/ChristianVisintin/lStringEXTibBMPP) [![Issues](https://img.shields.io/github/issues/ChristianVisintin/StringEXT.svg)](https://github.com/ChristianVisintin/StringEXT) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/ChristianVisintin/StringEXT/issues) [![MemoryLeaks](https://img.shields.io/badge/Memory%20Leaks-None-brightgreen.svg)](https://img.shields.io/badge/Memory%20Leaks-None-brightgreen.svg)
 
 string.h extended ~ Developed by Christian Visintin
 
-Current Version: 1.0 - 2018/11/24
+Current Version: 1.0.0 - 2018/11/24
 
 ## Introduction
 
-StringEXT is an extension for string.h which introduces a lot of functions missing in C.
+StringEXT is a library which extends string.h introducing a lot of functions missing in standard string C library.
+
+## Build
+
+It is possible to build libStringext with autotools
+
+```sh
+./autogen.sh
+./configure
+make
+make install
+```
 
 ## Functions
 

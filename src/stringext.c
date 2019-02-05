@@ -30,7 +30,7 @@
  * Returns the index of needle in haystack
  * @param char*: string to search in
  * @param char*: string to search for
- * @return: index of the first letter of needle in haystack. -1 if not found
+ * @returns: index of the first letter of needle in haystack. -1 if not found
 **/
 
 int indexOf(char* haystack, char* needle) {
@@ -45,7 +45,7 @@ int indexOf(char* haystack, char* needle) {
  * Returns the index of the last occurrence of needle in haystack
  * @param char*: string to search in
  * @param char*: string to search for
- * @return: index of the first letter of the last occurrence of needle in haystack. -1 if not found
+ * @returns: index of the first letter of the last occurrence of needle in haystack. -1 if not found
 **/
 
 int lastIndexOf(char* haystack, char* needle) {
@@ -65,7 +65,7 @@ int lastIndexOf(char* haystack, char* needle) {
  * Count occurrences of needle in haystack
  * @param char*: char array to count occurrences in
  * @param char*: char array to find in haystack
- * @return int: amount of occurrences of haystack in needle
+ * @returns int: amount of occurrences of haystack in needle
  **/
 
 int count(char* haystack, char* needle) {
@@ -88,7 +88,7 @@ int count(char* haystack, char* needle) {
  * @param size_t: current destination length
  * @param char*: string to concatenate to destination
  * @param size_t: length of string to concatenate
- * @return char*: pointer to destination
+ * @returns char*: pointer to destination
 **/
 
 char* concat(char* destination, char* toConcat) {
@@ -109,7 +109,7 @@ char* concat(char* destination, char* toConcat) {
  * Tests whether haystacks ends with needle
  * @param char*: string to check if ends with needle
  * @param char*: string to check if is at the end of needle
- * @return int: 0 if haystack ends with needle
+ * @returns int: 0 if haystack ends with needle
 **/
 
 int endsWith(char* haystack, char* needle) {
@@ -120,7 +120,7 @@ int endsWith(char* haystack, char* needle) {
  * Tests whether haystacks starts with needle
  * @param char*: string to check if starts with needle
  * @param char*: string to check if is at the begin of needle
- * @return int: 0 if haystack starts with needle
+ * @returns int: 0 if haystack starts with needle
 **/
 
 int startsWith(char* haystack, char* needle) {
@@ -132,7 +132,7 @@ int startsWith(char* haystack, char* needle) {
  * @param char*: string to apply the replacement
  * @param char*: string to replace
  * @param char*: string that will replace oldChar
- * @return char*: pointer to destination string
+ * @returns char*: pointer to destination string
 **/
 
 char* replace(char* str, char* oldChar, char* newChar) {
@@ -168,7 +168,7 @@ char* replace(char* str, char* oldChar, char* newChar) {
  * @param char*: string replacement will be applied to
  * @param char*: string to replace
  * @param char*: string that will replace oldChar
- * @return char*: pointer to destination string
+ * @returns char*: pointer to destination string
 **/
 
 char* replaceAll(char* str, char* oldChar, char* newChar) {
@@ -183,7 +183,7 @@ char* replaceAll(char* str, char* oldChar, char* newChar) {
  * @param char*: string to take the substring from
  * @param int: The position where to start the extraction. First character is at index 0
  * @param int: Amount of characters to get starting from beginIndex
- * @return char*: pointer to new allocated string
+ * @returns char*: pointer to new allocated string
 **/
 
 char* substr(char* str, int beginIndex, int count) {
@@ -201,7 +201,7 @@ char* substr(char* str, int beginIndex, int count) {
  * @param char*: string to take the substring from
  * @param int: The position where to start the extraction. First character is at index 0
  * @param int: The position (up to, but not including) where to end the extraction.
- * @return char*: pointer to new allocated string
+ * @returns char*: pointer to new allocated string
 **/
 
 char* substring(char* str, int beginIndex, int endIndex) {
@@ -211,7 +211,7 @@ char* substring(char* str, int beginIndex, int endIndex) {
 /**
  * Converts all of the characters in this String to lower case using the rules of the default locale.
  * @param char*: string to convert
- * @return pointer to str
+ * @returns pointer to str
 **/
 
 char* toLowerCase(char* str) {
@@ -223,7 +223,7 @@ char* toLowerCase(char* str) {
 /**
  * Converts all of the characters in this String to upper case using the rules of the default locale.
  * @param char*: string to convert
- * @return pointer to str
+ * @returns pointer to str
 **/
 
 char* toUpperCase(char* str) {
@@ -235,7 +235,7 @@ char* toUpperCase(char* str) {
 /**
  * Reverse a string
  * @param char*: string to reverse
- * @return char*: pointer to str
+ * @returns char*: pointer to str
 **/
 
 char* reverse(char* str) {
@@ -257,7 +257,7 @@ char* reverse(char* str) {
 /**
  * Check if the provided string is a Palindrome
  * @param char*: string to check
- * @return int: 0 if it is a Palindrome
+ * @returns int: 0 if it is a Palindrome
 **/
 
 int isPalindrome(char* str) {
@@ -290,7 +290,7 @@ int isPalindrome(char* str) {
  * @param int*: will store number of tokens created
  * @param char*: the string to create tokens from, must be NULL terminated
  * @param char*: delimiter used to create tokens, delimiter won't be stored into tokens
- * @return char**: tokens, char array of pointers, each position contains a token
+ * @returns char**: tokens, char array of pointers, each position contains a token
  * NOTE: to access token => *(tokens + index)
  * NOTE: to free token array => free(*(tokens + index)); for each index, and eventually free(tokens);
 **/
@@ -344,7 +344,7 @@ char** strsplit(int* tokenCount, char* haystack, char* delimiter) {
  * @param char** tokens: pointer to char pointers, where each pointer in tokens is a token
  * @param int: number of tokens in the array
  * @param char*: delimiter used to join all tokens
- * @return char*: pointer to char array which contains the joined tokens
+ * @returns char*: pointer to char array which contains the joined tokens
 **/
 
 char* strjoin(char** tokens, int tokenCount, char* delimiter) {
@@ -384,7 +384,7 @@ char* strjoin(char** tokens, int tokenCount, char* delimiter) {
 /**
  * Removes leading whitespaces omitted from string.
  * @param char*: string to remove whitespaces from
- * @return char*: pointer to str
+ * @returns char*: pointer to str
 **/
 
 char* ltrim(char* str) {
@@ -408,7 +408,7 @@ char* ltrim(char* str) {
 /**
  * Removes trailing whitespaces omitted from string.
  * @param char*: string to remove whitespaces from
- * @return char*: pointer to str
+ * @returns char*: pointer to str
 **/
 
 char* rtrim(char* str) {
@@ -431,7 +431,7 @@ char* rtrim(char* str) {
 /**
  * Removes leading and trailing whitespaces omitted from string.
  * @param char*: string to remove whitespaces from
- * @return char*: pointer to str
+ * @returns char*: pointer to str
 **/
 
 char* trim(char* str) {
@@ -448,7 +448,7 @@ char* trim(char* str) {
  * @param char*: str to Justify
  * @param int: width
  * @param char: the character used to fill the empty space
- * @return char*: pointer to reallocated string. Check if NULL
+ * @returns char*: pointer to reallocated string. Check if NULL
 **/
 
 char* ljust(char* str, int width, char fillChar) {
@@ -479,7 +479,7 @@ char* ljust(char* str, int width, char fillChar) {
  * @param char*: str to Justify
  * @param int: width
  * @param char: the character used to fill the empty space
- * @return char*: pointer to reallocated string check if NULL
+ * @returns char*: pointer to reallocated string check if NULL
 **/
 
 char* cjust(char* str, int width, char fillChar) {
@@ -521,7 +521,7 @@ char* cjust(char* str, int width, char fillChar) {
  * @param char*: str to Justify
  * @param int: width
  * @param char: the character used to fill the empty space
- * @return char*: pointer to reallocated string; check if NULL
+ * @returns char*: pointer to reallocated string; check if NULL
 **/
 
 char* rjust(char* str, int width, char fillChar) {
@@ -549,7 +549,7 @@ char* rjust(char* str, int width, char fillChar) {
  * If a character of str is not an hex representation it will be conveted to 0
  * @param uint8_t* dest: buffer that will contain the hex values
  * @param char* str: buffer which contains the ASCII representation
- * @return int: the length of the destination
+ * @returns int: the length of the destination
 **/
 
 int asciiToHex(uint8_t* dest, char* str) {
@@ -571,7 +571,7 @@ int asciiToHex(uint8_t* dest, char* str) {
  * @param char*: destination buffer, its size must be bytes size * 2
  * @param uint8_t*: hex buffer
  * @param size_t: length of buffer
- * @return char*: pointer to dest
+ * @returns char*: pointer to dest
 **/
 
 char* hexToAscii(char* dest, uint8_t* bytes, size_t len) {
