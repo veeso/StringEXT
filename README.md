@@ -1,6 +1,6 @@
 # libStringEXT
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-teal.svg)](https://opensource.org/licenses/MIT) [![Stars](https://img.shields.io/github/stars/ChristianVisintin/StringEXT.svg)](https://github.com/ChristianVisintin/StringEXT) [![Issues](https://img.shields.io/github/issues/ChristianVisintin/StringEXT.svg)](https://github.com/ChristianVisintin/StringEXT/issues)
+[![License: MIT](https://img.shields.io/badge/License-MIT-teal.svg)](https://opensource.org/licenses/MIT) [![Stars](https://img.shields.io/github/stars/ChristianVisintin/StringEXT.svg)](https://github.com/ChristianVisintin/StringEXT) [![Issues](https://img.shields.io/github/issues/ChristianVisintin/StringEXT.svg)](https://github.com/ChristianVisintin/StringEXT/issues) [![Build](https://api.travis-ci.org/ChristianVisintin/StringEXT.svg?branch=master)](https://travis-ci.org/ChristianVisintin/StringEXT)
 
 C string enhancement ~ Developed by Christian Visintin
 

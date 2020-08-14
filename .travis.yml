@@ -1,0 +1,23 @@
+jobs:
+  include:
+    - stage: "stringext-linux"
+      language: c
+      dist: trusty
+      compiler: gcc
+      os: linux
+      before_script:
+        - mkdir build/ && cd build/
+      script:
+        - cmake ..
+        - make
+        - make install
+    - stage: "stringext-minGW"
+      language: c
+      os: windows
+      compiler: gcc
+      before_script:
+        - mkdir build/
+        - cd build/
+      script:
+        - cmake .. -G "MinGW Makefiles" -DCMAKE_SH="CMAKE_SH-NOTFOUND"
+        - mingw32-make
