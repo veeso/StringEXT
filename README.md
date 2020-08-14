@@ -1,10 +1,48 @@
 # libStringEXT
 
-[![HitCount](http://hits.dwyl.io/ChristianVisintin/StringEXT.svg)](http://hits.dwyl.io/ChristianVisintin/StringEXT) [![Stars](https://img.shields.io/github/stars/ChristianVisintin/libBMPP.svg)](https://github.com/ChristianVisintin/lStringEXTibBMPP) [![Issues](https://img.shields.io/github/issues/ChristianVisintin/StringEXT.svg)](https://github.com/ChristianVisintin/StringEXT) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/ChristianVisintin/StringEXT/issues) [![MemoryLeaks](https://img.shields.io/badge/Memory%20Leaks-None-brightgreen.svg)](https://img.shields.io/badge/Memory%20Leaks-None-brightgreen.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-teal.svg)](https://opensource.org/licenses/MIT) [![Stars](https://img.shields.io/github/stars/ChristianVisintin/StringEXT.svg)](https://github.com/ChristianVisintin/StringEXT) [![Issues](https://img.shields.io/github/issues/ChristianVisintin/StringEXT.svg)](https://github.com/ChristianVisintin/StringEXT/issues)
 
-string.h extended ~ Developed by Christian Visintin
+C string enhancement ~ Developed by Christian Visintin
 
-Current Version: 1.0.0 - 2018/11/24
+Current Version: 1.0.0 - 2020/08/??
+
+---
+
+- [libStringEXT](#libstringext)
+  - [Introduction](#introduction)
+  - [Build](#build)
+    - [Autotools](#autotools)
+    - [CMake](#cmake)
+  - [Functions](#functions)
+    - [indexOf](#indexof)
+    - [lastIndexOf](#lastindexof)
+    - [count](#count)
+    - [concat](#concat)
+    - [endsWith](#endswith)
+    - [startsWith](#startswith)
+    - [replace](#replace)
+    - [replaceAll](#replaceall)
+    - [substr](#substr)
+    - [substring](#substring)
+    - [toLowerCase](#tolowercase)
+    - [toUpperCase](#touppercase)
+    - [reverse](#reverse)
+    - [isPalindrome](#ispalindrome)
+    - [strsplit](#strsplit)
+    - [strjoin](#strjoin)
+    - [ltrim](#ltrim)
+    - [rtrim](#rtrim)
+    - [trim](#trim)
+    - [ljust](#ljust)
+    - [cjust](#cjust)
+    - [rjust](#rjust)
+    - [asciiToHex](#asciitohex)
+    - [hexToAscii](#hextoascii)
+  - [Contributions](#contributions)
+  - [Changelog](#changelog)
+  - [License](#license)
+
+---
 
 ## Introduction
 
@@ -12,11 +50,22 @@ StringEXT is a library which extends string.h introducing a lot of functions mis
 
 ## Build
 
-It is possible to build libStringext with autotools
+It is possible to build libStringext with both autotools and CMake
+
+### Autotools
 
 ```sh
 ./autogen.sh
 ./configure
+make
+make install
+```
+
+### CMake
+
+```sh
+mkdir -p build/ && cd build/
+cmake ..
 make
 make install
 ```
@@ -264,14 +313,12 @@ Everybody can contribute to this library, indeed any improvement will be appreci
 
 ---
 
+## Changelog
+
+View [CHANGELOG](CHANGELOG.md)
+
+---
+
 ## License
 
-MIT License
-
-Copyright (c) 2018 Christian Visintin
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+View [LICENSE](LICENSE)
