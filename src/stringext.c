@@ -30,13 +30,13 @@
  * Returns the index of needle in haystack
  * @param char*: string to search in
  * @param char*: string to search for
- * @returns: index of the first letter of needle in haystack. -1 if not found
+ * @returns: index of the first letter of needle in haystack. SIZE_MAX
 **/
 
-int indexOf(char* haystack, char* needle) {
+size_t strext_index_of(const char* haystack, const char* needle) {
   const char* ptr = strstr(haystack, needle);
   if (ptr == NULL)
-    return -1;
+    return SIZE_MAX;
   else
     return ptr - haystack;
 }
@@ -45,19 +45,23 @@ int indexOf(char* haystack, char* needle) {
  * Returns the index of the last occurrence of needle in haystack
  * @param char*: string to search in
  * @param char*: string to search for
- * @returns: index of the first letter of the last occurrence of needle in haystack. -1 if not found
+ * @returns: index of the first letter of the last occurrence of needle in haystack. SIZE_MAX
 **/
 
-int lastIndexOf(char* haystack, char* needle) {
-  int lastIndex = -1;
-  int tmpIndex = -1;
+size_t strext_last_index_of(const char* haystack, const char* needle) {
+  size_t lastIndex = SIZE_MAX;
+  size_t tmpIndex = 0;
   do {
-    tmpIndex = indexOf(haystack + tmpIndex + 1, needle);
-    if (tmpIndex != -1) {
-      lastIndex += tmpIndex + 1;
+    tmpIndex = strext_index_of(haystack + tmpIndex + 1, needle);
+    if (tmpIndex != SIZE_MAX) {
+      if (lastIndex == SIZE_MAX) {
+        lastIndex = tmpIndex;
+      } else {
+        lastIndex += tmpIndex;
+      }
       tmpIndex = lastIndex;
     }
-  } while (tmpIndex != -1);
+  } while (tmpIndex != SIZE_MAX);
   return lastIndex;
 }
 
@@ -68,41 +72,17 @@ int lastIndexOf(char* haystack, char* needle) {
  * @returns int: amount of occurrences of haystack in needle
  **/
 
-int count(char* haystack, char* needle) {
+size_t strext_count(const char* haystack, const char* needle) {
 
-  int occurrences = 0;
-  int index = 0;
-  int pos = 0;
-  while ((index = indexOf(haystack + pos, needle)) != -1) {
+  size_t occurrences = 0;
+  size_t index = 0;
+  size_t pos = 0;
+  while ((index = strext_index_of(haystack + pos, needle)) != SIZE_MAX) {
     occurrences++; //Increment occurrences
     index++;       //Increment index, otherwise will loops on the same index
     pos += index;  //Increment pos of index
   }
-
   return occurrences;
-}
-
-/**
- * Concatenate to destination toConcat. NOTE: destination will be reallocated
- * @param char* destination: string where all strings will be stored
- * @param size_t: current destination length
- * @param char*: string to concatenate to destination
- * @param size_t: length of string to concatenate
- * @returns char*: pointer to destination
-**/
-
-char* concat(char* destination, char* toConcat) {
-
-  size_t destLength = strlen(destination);
-  size_t toConcatLength = strlen(toConcat);
-
-  destination = (char*)realloc(destination, sizeof(char) * (destLength + toConcatLength + 1));
-  if (destination == NULL) {
-    return NULL;
-  }
-  memcpy(destination + destLength, toConcat, toConcatLength);
-  destination[destLength + toConcatLength] = 0x00;
-  return destination;
 }
 
 /**
@@ -112,7 +92,7 @@ char* concat(char* destination, char* toConcat) {
  * @returns int: 0 if haystack ends with needle
 **/
 
-int endsWith(char* haystack, char* needle) {
+int strext_ends_with(const char* haystack, const char* needle) {
   return strcmp(haystack + (strlen(haystack) - strlen(needle)), needle);
 }
 
@@ -123,44 +103,44 @@ int endsWith(char* haystack, char* needle) {
  * @returns int: 0 if haystack starts with needle
 **/
 
-int startsWith(char* haystack, char* needle) {
+int strext_starts_with(const char* haystack, const char* needle) {
   return strncmp(haystack, needle, strlen(needle));
 }
 
 /**
- * Replace once oldChar with newChar in str NOTE: str will be reallocated
+ * Replace once oldChar with newChar in str
  * @param char*: string to apply the replacement
  * @param char*: string to replace
  * @param char*: string that will replace oldChar
  * @returns char*: pointer to destination string
 **/
 
-char* replace(char* str, char* oldChar, char* newChar) {
+char* strext_replace(const char* str, const char* old_char, const char* new_char, size_t* str_size) {
 
-  size_t newSize = strlen(str);
+  size_t new_size = strlen(str);
   //Calc new size for reallocation
-  if (strlen(newChar) > strlen(oldChar)) {
-    newSize = strlen(str) + (strlen(newChar) - strlen(oldChar));
-  } else if (strlen(newChar) < strlen(oldChar)) {
-    newSize = strlen(str) - (strlen(oldChar) - strlen(newChar));
+  if (strlen(new_char) > strlen(old_char)) {
+    new_size = strlen(str) + (strlen(old_char) - strlen(old_char));
+  } else if (strlen(new_char) < strlen(old_char)) {
+    new_size = strlen(str) - (strlen(old_char) - strlen(new_char));
   }
   //Check if str has to be reallocated
-  if (newSize > 0) {
-    str = (char*)realloc(str, newSize + 1);
-    if (str == NULL) {
-      return NULL;
-    }
+  char* dest = (char*) malloc(sizeof(char) * (new_size + 1));
+  if (dest == NULL) {
+    return NULL;
   }
+  memcpy(dest, str, strlen(str));
   //Get index of old char
-  int indexOldChar = indexOf(str, oldChar);
+  int indexOldChar = indexOf(str, old_char);
   if (indexOldChar != -1) {
     //Move content forward of n positions
-    memcpy(str + indexOldChar + strlen(newChar), str + indexOldChar + strlen(oldChar), strlen(str) - (indexOldChar + strlen(oldChar)));
-    memcpy(str + indexOldChar, newChar, strlen(newChar));
+    memcpy(dest + indexOldChar + strlen(new_char), str + indexOldChar + strlen(old_char), strlen(str) - (indexOldChar + strlen(old_char)));
+    memcpy(dest + indexOldChar, new_char, strlen(new_char));
   }
   //NULL terminator
-  str[newSize] = 0x00;
-  return str;
+  dest[new_size] = 0x00;
+  *str_size = new_size;
+  return dest;
 }
 
 /**
@@ -171,11 +151,13 @@ char* replace(char* str, char* oldChar, char* newChar) {
  * @returns char*: pointer to destination string
 **/
 
-char* replaceAll(char* str, char* oldChar, char* newChar) {
-
-  while (indexOf(str, oldChar) != -1 && str != NULL)
-    str = replace(str, oldChar, newChar);
-  return str;
+char* strext_replace_all(const char* str, const char* old_char, const char* new_char, size_t* str_size) {
+  char* destination = (char*) malloc(sizeof(char) * (strlen(str) + 1));
+  memset(destination, str, strlen(str));
+  destination[strlen(str) + 1] = 0x00;
+  while (strext_index_of(destination, old_char) != SIZE_MAX && destination != NULL)
+    destination = replace(destination, old_char, new_char, str_size);
+  return destination;
 }
 
 /**
@@ -186,13 +168,14 @@ char* replaceAll(char* str, char* oldChar, char* newChar) {
  * @returns char*: pointer to new allocated string
 **/
 
-char* substr(char* str, int beginIndex, int count) {
-  char* tmp = (char*)malloc(sizeof(char) * count + 1);
+char* strext_substr(const char* str, const size_t s_index, const size_t count, size_t* str_size) {
+  char* tmp = (char*) malloc(sizeof(char) * count + 1);
   if (tmp == NULL) {
     return NULL;
   }
-  memcpy(tmp, str + beginIndex, count);
+  memcpy(tmp, str + s_index, count);
   tmp[count] = 0x00; //Null terminate the string
+  *str_size = strlen(tmp);
   return tmp;
 }
 
@@ -204,8 +187,8 @@ char* substr(char* str, int beginIndex, int count) {
  * @returns char*: pointer to new allocated string
 **/
 
-char* substring(char* str, int beginIndex, int endIndex) {
-  return substr(str, beginIndex, endIndex - beginIndex);
+char* strext_substring(const char* str, const size_t s_index, const size_t e_index, size_t* str_size) {
+  return substr(str, s_index, e_index - s_index, str_size);
 }
 
 /**

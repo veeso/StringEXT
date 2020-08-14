@@ -31,44 +31,42 @@
 extern "C" {
 #endif
 
-int indexOf(char* haystack, char* needle);
-int lastIndexOf(char* haystack, char* needle);
+size_t strext_index_of(const char* haystack, const char* needle);
+size_t strext_last_index_of(const char* haystack, const char* needle);
 
-int count(char* haystack, char* needle);
+size_t strext_count(const char* haystack, const char* needle);
 
-char* concat(char* destination, char* toConcat);
+int strext_ends_with(const char* haystack, const char* needle);
+int strext_starts_with(const char* haystack, const char* needle);
 
-int endsWith(char* haystack, char* needle);
-int startsWith(char* haystack, char* needle);
+char* strext_replace(const char* str, const char* old_char, const char* new_char, size_t* str_size);
+char* strext_replace_all(const char* str, const char* old_char, const char* new_char, size_t* str_size);
 
-char* replace(char* str, char* oldChar, char* newChar);
-char* replaceAll(char* str, char* oldChar, char* newChar);
+char* strext_substr(const char* str, const size_t s_index, const size_t count, size_t* str_size);
+char* strext_substring(const char* str, const size_t s_index, const size_t e_index, size_t* str_size);
 
-char* substr(char* str, int beginIndex, int count);
-char* substring(char* str, int beginIndex, int endIndex);
+char* strext_to_lower_case(const char* str, size_t* str_size);
+char* strext_to_upper_case(const char* str, size_t* str_size);
 
-char* toLowerCase(char* str);
-char* toUpperCase(char* str);
+char* strext_reverse(const char* str, size_t* str_size);
+int strext_is_palindrome(const char* str);
 
-char* reverse(char* str);
-int isPalindrome(char* str);
+char** strext_strsplit(int* tokenCount, char* haystack, char* delimiter);
+char* strext_strjoin(char** tokens, int tokenCount, char* delimiter);
 
-char** strsplit(int* tokenCount, char* haystack, char* delimiter);
-char* strjoin(char** tokens, int tokenCount, char* delimiter);
+char* strext_ltrim(char* str);
+char* strext_rtrim(char* str);
+char* strext_trim(char* str);
 
-char* ltrim(char* str);
-char* rtrim(char* str);
-char* trim(char* str);
+char* strext_justify_left(char* str, int width, char fillChar);
+char* strext_justify_center(char* str, int width, char fillChar);
+char* strext_justify_right(char* str, int width, char fillChar);
 
-char* ljust(char* str, int width, char fillChar);
-char* cjust(char* str, int width, char fillChar);
-char* rjust(char* str, int width, char fillChar);
-
-int asciiToHex(uint8_t* dest, char* str);
-char* hexToAscii(char* dest, uint8_t* bytes, size_t len);
+uint8_t* strext_hexlify(const char* str, size_t* length);
+char* strext_unhexlify(const uint8_t* data, size_t* length);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif
+#endif // STRINGEXT_H
